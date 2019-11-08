@@ -1,0 +1,139 @@
+body{
+    background: black;
+    text-align: center;
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.backbutton{
+    position: absolute;
+    padding: 10px;
+    width: 100px;
+    user-select: none;
+    cursor: pointer;
+    border: 1px solid black;
+    border-radius: 15px;
+}
+
+.backbutton:hover{
+    border: 1px solid grey;
+    transition-duration: 200ms;
+}
+.backbutton:active{
+    background: white;
+}
+
+.arrow-left {
+    width: 0; 
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent; 
+    border-right:10px solid white; 
+}
+.backtext{
+    position: absolute;
+    left:40px;
+    top:0;
+    margin-top: 9px;
+    user-select: none;
+    cursor: pointer;
+}
+
+.logo{
+    width: 25%;
+    height: 8%;
+    border: 2px solid rgba(0, 0, 0, 0);
+    border-radius: 50px;
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.poster{
+    max-height: 450px;
+    max-width: 300px;
+    height: 450px;
+    width: 300px;
+    border: 3px solid lightgrey;
+    border-radius: 20px;
+}
+.top-container{
+    height: 450px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+h1{
+    color:cornflowerblue;
+}
+.ratings{
+    margin-top: 10px;
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.imdb{
+    width: 140px;
+    height: 55px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    border: 1px solid white;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.imdblogo{
+    width: 60%;
+    height: auto;
+}
+th,td{
+    padding:4px;
+}
+h2{
+    margin-top: 14px;
+}
+h3{
+    color: cornflowerblue;
+    margin-bottom: 0px;
+}
+p{
+    text-align: left;
+    font-size: 15px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(204, 204, 204);
+}
+.bottom-container{
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    font-size: 15px;
+    margin-top: 30px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(204, 204, 204);
+    border: 1px solid grey;
+}
+.item{
+    width: 25%;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding-top: 20px;
+    padding-left: 20px;
+}
+.itemlogo{
+    width: 20px;
+    height: 20px;
+    margin-right: 20px;
+}
+

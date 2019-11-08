@@ -1,8 +1,8 @@
 body{
-    /* background: rgb(24, 24, 163); */
     background: black;
     text-align: center;
-    color: skyblue;
+    color: cornflowerblue;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;   
 }
 
 .container {
@@ -18,28 +18,61 @@ body{
     border: 2px solid rgba(0, 0, 0, 0);
     border-radius: 50px;
 }
-.searchbar input[type=text]{
+.search-container{
+    width: 40%;
     margin-top: 40px;
-    font-size: 17px;
-    width: 100%;
-}
-.gobutton{
-    user-select: none;
-    width: 30px;
-    background: white;
-    color: blue;
-    border: 2px solid rgba(0, 0, 0, 0);
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background: rgb(19, 19, 19);
+    border: 0.5px solid grey;
     border-radius: 50px;
-    margin-top: 20px;
-    padding-left: 15px;
-    padding-right: 15px;
-    text-align: center; 
+    padding-left: 40px;
+    padding-right: 10px;
+}
+.bar{
+    width: 80%;
+    background: transparent;
+    border: none;
+    color: white;
+}
+.bar:focus{
+    outline-width: 0;
+}
+.bar::placeholder{
+    color: grey;
+}
+.pseudo{
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    user-select: none;
     cursor: pointer;
 }
-.gobutton:hover{
-    background: cornflowerblue;
-    color: white;
-    transition-duration: 300ms;
+.wheel{
+    width: 24px;
+    height: 24px;
+    margin-top: 8px;
+    margin-left: 1px;
+    background: rgba(0, 0, 0, 0) url('../assets/wheel.png') no-repeat center center / cover;
+}
+
+.pseudo:hover .wheel{
+    animation: rotation 2s infinite linear;
+    
+}  
+.gotext{
+    font-size: 33px;  
+}                                                 
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(359deg);
+    }
 }
 
 .results-wrapper{
@@ -77,12 +110,29 @@ body{
     border-radius: 20px;
 }
 
-.title{
-    font-family: 'Courier New', Courier, monospace;
+.poster:hover{
+    filter: opacity(0.5);
+    transition-duration: 200ms;
 }
 
 .showmore{
-    width: 100px;
-    height: 100px;
-    background:blue;
+    width: 35%;
+    height: 40px;
+    background:rgb(19, 19, 19);
+    border:none;
+    display: none;
+    color: white;
+    text-align: center;
+    font-size: 16px;
+    align-self: center;
+}
+
+@media only screen and (max-width: 767px) {
+    .logo{
+        width: 60%;
+        height: 25%;
+    }
+    .search-container{
+        padding-left: 20px;
+    }
 }

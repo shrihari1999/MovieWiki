@@ -6,21 +6,27 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="css/index.css">
-        <script src="js/request.js"></script>
+        <script src="js/main.js"></script>
         <title>MovieWiki</title>    
     </head>         
 
     <body>
         <div class="container">
-            <img src="./assets/reel.png" alt="" class="logo">
-            <input id="bar" type="text" placeholder="Search for movies">
-            <div class="gobutton" onclick="search()">Go!</div>
+            <img src="./assets/reel.png" class="logo">
+            <div class="search-container">
+                <input id="bar" class="bar" type="text" placeholder="Search">
+                <div class="pseudo" onclick="search()">
+                    <div class="gotext">G</div>
+                    <div class="wheel"></div>
+                </div>
+            </div>
 
             <div id="results-wrapper" class="results-wrapper">
-                <h1 class="results-title">Search Results</h1>
+                <p id="results-title" style="font-size:30px"></p>
+                
                 <div id="results" class="results">
-
                 </div>
+                <button id=showmore class="showmore" onclick="showMore()">Show more</button>
             </div>
         </div>                                                                                                                                      
     </body>
