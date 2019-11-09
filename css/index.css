@@ -51,7 +51,6 @@ body{
     flex-direction: row;
     justify-content: space-between;
     user-select: none;
-    cursor: pointer;
 }
 .wheel{
     width: 24px;
@@ -84,9 +83,9 @@ body{
 }
 
 .pagination-container{
-    width: 100%;
+    width: 70%;
     height: 60px;
-    display: flex;
+    display: none;
     flex-direction: row;
     margin-bottom: 50px;
     margin-left:40px;
@@ -110,6 +109,7 @@ body{
     transition: background-color .3s;
     border: 1px solid rgb(19, 19, 19);
     user-select: none;
+    cursor: pointer;
 }
   
 .pagination a.active {
@@ -142,6 +142,7 @@ body{
     justify-content: center;
     align-items: center;
     margin: 10px;
+    user-select: none;
 }
 
 .poster{
@@ -151,9 +152,10 @@ body{
     height: 360px;
     border: 3px solid lightgrey;
     border-radius: 20px;
+    box-shadow: 0 5px 8px 0 rgb(70, 70, 70), 0 5px 8px 0 rgb(70, 70, 70);
 }
 
-.poster:hover{
+.card:hover .poster{
     filter: opacity(0.5);
     transition-duration: 200ms;
 }

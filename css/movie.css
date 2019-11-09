@@ -75,14 +75,14 @@ h1{
 }
 .ratings{
     margin-top: 10px;
-    width: 50%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 .imdb{
     width: 140px;
-    height: 55px;
+    height: 50px;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -90,12 +90,8 @@ h1{
     border-radius: 10px;
     cursor: pointer;
 }
-.imdblogo{
-    width: 60%;
-    height: auto;
-}
 th,td{
-    padding:4px;
+    padding-left:20px;
 }
 h2{
     margin-top: 14px;
@@ -117,7 +113,7 @@ p{
     flex-wrap: wrap;
     justify-content: space-around;
     font-size: 15px;
-    margin-top: 30px;
+    margin-top: 80px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: rgb(204, 204, 204);
     border: 1px solid grey;
@@ -135,5 +131,16 @@ p{
     width: 20px;
     height: 20px;
     margin-right: 20px;
+}
+.final-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    font-size: 15px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(204, 204, 204);
+    margin-left: 4%;
+    margin-top: 30px;
 }
 

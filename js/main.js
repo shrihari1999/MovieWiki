@@ -21,15 +21,6 @@ window.onload=function(){
         search(0,Number(pageinput.value));
     }
     });
-
-    const left = document.getElementById("left");
-    const right = document.getElementById("right");
-    left.onclick=function(){
-        search(-1,window.page);
-    }
-    right.onclick=function(){
-        search(1,window.page);
-    }
 }
 
 function search(dir,page){
@@ -43,9 +34,11 @@ function search(dir,page){
             const restitle = document.getElementById("results-title");
             if(res.Response=='True'){
                 restitle.innerHTML=String(res.totalResults)+' MOVIES FOUND';
-                makePagination(Math.ceil(res.totalResults/window.page));
+                makePagination(Math.ceil(res.totalResults/10));
                 populateCards(res.Search);
            } else{
+                const paginationbar=document.getElementById("pagination-container");
+                paginationbar.style="display:none;"
                 restitle.innerHTML=res.Error;
            }
         });
@@ -58,28 +51,40 @@ function makePagination(maxPage){
     const prevnumber = document.getElementById("prev");
     const currentnumber = document.getElementById("curr");
     const nextnumber = document.getElementById("next");
-    prevnumber.style="display:none;";
-    nextnumber.style="display:none;";
 
-    if(window.page-1>0){
+    if(window.page-1!=0){
         prevnumber.innerHTML=window.page-1;
         prevnumber.style="display:block";
         prevnumber.onclick=function(){
             search(0,window.page-1);
         }
-        right.onclick = 'none';
-        right.style="cursor:not-allowed";
+        left.onclick=function(){
+            search(-1,window.page);
+        }
+        left.style="cursor:pointer";
+    }
+    else{
+        prevnumber.style="display:none;";
+        left.onclick = 'none';
+        left.style="cursor:not-allowed";
     }
     currentnumber.innerHTML=window.page;
     currentnumber.className="active";
-    if(window.page+1<maxPage){
+    if(window.page+1!=maxPage){
         nextnumber.innerHTML=window.page+1;
         nextnumber.style="display:block";
         nextnumber.onclick=function(){
             search(0,window.page+1);
         }
-        left.onclick = 'none';
-        left.style="cursor:not-allowed";
+        right.onclick=function(){
+            search(1,window.page);
+        }
+        right.style="cursor:pointer";
+    }
+    else{
+        nextnumber.style="display:none;";
+        right.onclick = 'none';
+        right.style="cursor:not-allowed";
     }
 }
 
@@ -148,6 +153,4 @@ function clearResults(){
         rescontainer.removeChild(rescontainer.firstChild)
     }
     showmore.style="display:none";
-    const paginationbar=document.getElementById("pagination-container");
-    paginationbar.style="display:none;"
 }

@@ -18,15 +18,46 @@ function searchById(id){
     .then(res => {
         if(res){
             console.log(res);
-            makePage();                         
+            makePage(res);                         
        } else{
            alert("Could not get");
        }
     });
 }
 
-function makePage(){
-    //make title to upper case
+function makePage(result){
+    let poster = document.getElementById("img");
+    if(result.Poster=='N/A'){
+        poster.setAttribute("src", './assets/film.png');
+        poster.style="background:grey";
+    }
+    else{
+        poster.setAttribute("src", result.Poster);
+    }
+
+    // let year = document.getElementById("year");
+    // year.innerHTML=result.Year;
+
+    // let genre = document.getElementById("genre");
+    // genre.innerHTML=result.Genre;
+
+    for (var key in result) {
+        var val = result[key];
+        let element = document.getElementById(key);
+        if(element){
+            element.innerHTML+=val;
+        }
+    }
+    let title = document.getElementById("Title");
+    title.innerHTML=title.innerHTML.toUpperCase();
+
+    result.Ratings.forEach(row => {
+        let element = document.getElementById(row.Source.split(' ')[0]);
+        if(element){
+            element.innerHTML=row.Value;
+        }
+    });
+
 }
 
 function imdbNav(){
