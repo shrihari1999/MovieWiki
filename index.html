@@ -14,8 +14,8 @@
         <div class="container">
             <img src="./assets/reel.png" class="logo">
             <div class="search-container">
-                <input id="bar" class="bar" type="text" placeholder="Search">
-                <div class="pseudo" onclick="search()">
+                <input id="bar" class="input bar" type="text" placeholder="Search">
+                <div class="pseudo" onclick="search(0,1)">
                     <div class="gotext">G</div>
                     <div class="wheel"></div>
                 </div>
@@ -23,7 +23,18 @@
 
             <div id="results-wrapper" class="results-wrapper">
                 <p id="results-title" style="font-size:30px"></p>
-                
+                <div id="pagination-container" class="pagination-container">
+                    <div class="pageinputbox">
+                        <input class="pagebar bar" id="page" type="text" placeholder="Page">
+                    </div>
+                    <div class="pagination">
+                        <a id="left">&laquo;</a>
+                        <a id="prev"></a>
+                        <a id="curr"></a>
+                        <a id="next"></a>
+                        <a id="right">&raquo;</a>
+                    </div>
+                </div>
                 <div id="results" class="results">
                 </div>
                 <button id=showmore class="showmore" onclick="showMore()">Show more</button>

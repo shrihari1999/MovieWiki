@@ -8,8 +8,7 @@ function getUrlVars() {
 
 document.addEventListener("DOMContentLoaded", function(event) { 
     let selectedMovieId = getUrlVars()["id"];
-    // if(selectedMovie == null)
-    //     displayError();
+    localStorage.page= getUrlVars()["page"];
     searchById(selectedMovieId);
 });                                                             
 
