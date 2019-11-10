@@ -1,3 +1,6 @@
+var imdbID;
+
+//Logic for getting URL parameters
 function getUrlVars() {
     var vars = {};
     window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
@@ -6,25 +9,28 @@ function getUrlVars() {
     return vars;
 }
 
+//Gets and stores URL parameters
 document.addEventListener("DOMContentLoaded", function(event) { 
     let selectedMovieId = getUrlVars()["id"];
     localStorage.page= getUrlVars()["page"];
     searchById(selectedMovieId);
 });                                                             
 
+//Performs search by movie ID
 function searchById(id){
     fetch("http://www.omdbapi.com/?apikey=bc4520bb&i="+id)
     .then(res => res.json())
     .then(res => {
         if(res){
-            console.log(res);
-            makePage(res);                         
+            window.imdbID=res.imdbID;
+            makePage(res);                        
        } else{
            alert("Could not get");
        }
     });
 }
 
+//Makes the entire page
 function makePage(result){
     let poster = document.getElementById("img");
     if(result.Poster=='N/A'){
@@ -34,12 +40,6 @@ function makePage(result){
     else{
         poster.setAttribute("src", result.Poster);
     }
-
-    // let year = document.getElementById("year");
-    // year.innerHTML=result.Year;
-
-    // let genre = document.getElementById("genre");
-    // genre.innerHTML=result.Genre;
 
     for (var key in result) {
         var val = result[key];
@@ -60,10 +60,12 @@ function makePage(result){
 
 }
 
+//Navigate to movie's IMDB page
 function imdbNav(){
-    window.location="https://www.imdb.com/title/";//add id here;
+    window.location="https://www.imdb.com/title/"+window.imdbID;
 }
 
+//Back button functionality
 function goBack() {
     window.history.back();
 }

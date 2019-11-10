@@ -2,32 +2,35 @@ var counter;
 var remaining;
 var page;
 
+//Event listeners for enter button
 document.addEventListener("DOMContentLoaded", function() { 
-    search(0,Number(localStorage.page));
-});
-
-
-window.onload=function(){
+    search(0,Number(localStorage.page),0);
     const movieinput = document.getElementById("bar");
     const pageinput = document.getElementById("page");
     movieinput.addEventListener("keyup", function(event) {
     if (event.keyCode === 13) {
         pageinput.value="";
-        search(0,1);
+        search(0,1,1);
     }
     });
     pageinput.addEventListener("keyup", function(event) {
     if (event.keyCode === 13) {
-        search(0,Number(pageinput.value));
+        search(0,Number(pageinput.value),0);
     }
     });
-}
+});
 
-function search(dir,page){
+//Performs search and calls page generating functions
+function search(dir,page,saveString){
+    const movieinput = document.getElementById("bar");
     window.page=dir+page;
+    if(saveString){
+        localStorage.searchString=movieinput.value;
+    }
+    var searchString = localStorage.searchString;
     clearResults();
-    var searchString = document.getElementById('bar').value;
     if(searchString){
+        movieinput.value=searchString;
         fetch("http://www.omdbapi.com/?apikey=bc4520bb&s="+searchString+'&page='+String(window.page))
         .then(res => res.json())
         .then(res => {
@@ -45,6 +48,7 @@ function search(dir,page){
     }
 }
 
+//Makes pagination bar
 function makePagination(maxPage){
     const left = document.getElementById("left");
     const right = document.getElementById("right");
@@ -88,6 +92,7 @@ function makePagination(maxPage){
     }
 }
 
+//Populates the page with movie data
 function populateCards(results){
     const paginationbar=document.getElementById("pagination-container");
     paginationbar.style="display:flex;"
@@ -137,6 +142,7 @@ function populateCards(results){
 
 }
 
+//Shows more movies
 function showMore(){
     const rescontainer = document.getElementById("results");
     remaining.forEach(element => {
@@ -145,6 +151,7 @@ function showMore(){
     showmore.style="display:none";
 }
 
+//Clears the page of all movie data
 function clearResults(){
     counter = 0;
     remaining = [];
