@@ -1,6 +1,7 @@
 var counter;
 var remaining;
 var page;
+var searchString;
 
 //Event listeners for enter button
 document.addEventListener("DOMContentLoaded", function() { 
@@ -27,11 +28,11 @@ function search(dir,page,saveString){
     if(saveString){
         localStorage.searchString=movieinput.value;
     }
-    var searchString = localStorage.searchString;
+    window.searchString = localStorage.searchString;
     clearResults();
-    if(searchString){
-        movieinput.value=searchString;
-        fetch("http://www.omdbapi.com/?apikey=bc4520bb&type=movie&s="+searchString+'&page='+String(window.page))
+    if(window.searchString){
+        movieinput.value=window.searchString;
+        fetch("http://www.omdbapi.com/?apikey=bc4520bb&type=movie&s="+window.searchString+'&page='+String(window.page))
         .then(res => res.json())
         .then(res => {
             const restitle = document.getElementById("results-title");
@@ -106,7 +107,7 @@ function populateCards(results){
             let card = document.createElement("div");
             card.className = "card";
             card.onclick=function(){
-                window.location="./movie.html?id="+String(result.imdbID)+"&page="+window.page;
+                window.location="./movie.html?id="+String(result.imdbID)+"&page="+window.page+"&string="+window.searchString;
             }
             
             let poster = document.createElement("img");

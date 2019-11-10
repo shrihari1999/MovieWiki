@@ -13,6 +13,7 @@ function getUrlVars() {
 document.addEventListener("DOMContentLoaded", function(event) { 
     let selectedMovieId = getUrlVars()["id"];
     localStorage.page= getUrlVars()["page"];
+    localStorage.searchString= getUrlVars()["string"];
     searchById(selectedMovieId);
 });                                                             
 
