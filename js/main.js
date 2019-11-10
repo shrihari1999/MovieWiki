@@ -31,7 +31,7 @@ function search(dir,page,saveString){
     clearResults();
     if(searchString){
         movieinput.value=searchString;
-        fetch("http://www.omdbapi.com/?apikey=bc4520bb&s="+searchString+'&page='+String(window.page))
+        fetch("http://www.omdbapi.com/?apikey=bc4520bb&type=movie&s="+searchString+'&page='+String(window.page))
         .then(res => res.json())
         .then(res => {
             const restitle = document.getElementById("results-title");
@@ -161,3 +161,9 @@ function clearResults(){
     }
     showmore.style="display:none";
 }
+
+//Resets local values
+window.addEventListener("unload", function(){
+    localStorage.searchString="";
+    localStorage.page="";
+})

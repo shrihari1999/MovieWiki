@@ -62,7 +62,7 @@ function makePage(result){
 
 //Navigate to movie's IMDB page
 function imdbNav(){
-    window.location="https://www.imdb.com/title/"+window.imdbID;
+    window.open("https://www.imdb.com/title/"+window.imdbID, '_blank');
 }
 
 //Back button functionality
